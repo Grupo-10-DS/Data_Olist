@@ -3,27 +3,7 @@ import os
 import pandas as pd
 import csv
 
-# ----- Validadores------
-def val_date(col) -> bool:
-    key = ["date", "times", "order_approved_at", ""]
-    for name in key:
-        return name in col
-
-
-def find_date(df):
-    cols = list(df.columns)
-
-    for col in cols:
-        if val_date(col):
-            df[f"{col}"] = pd.to_datetime(df[f"{col}"], infer_datetime_format=True)
-    return df
-
-
-def find_date_dict(dict):
-    for name in dict.keys():
-        dict[name] = find_date(dict[name])
-
-    return dict
+from validators import find_date_dict,dict_lower,dict_upper,dict_dupli_id, dict_scan_null
 
 
 class Labels:
@@ -68,8 +48,21 @@ class Load:
 
             data_dict[name[:-4]] = pd.read_csv(full_path)
 
-        # ----to datetime-----
+        
         data_dict = find_date_dict(data_dict)
+
+        data_dict = dict_lower(data_dict)
+
+        data_dict = dict_upper(data_dict)
+
+        data_dict = dict_dupli_id(data_dict)
+
+        return data_dict
+
+    def incremental_from_csv(self, path):
+        data_dict = self.load_from_csv(path)
+
+        data_dict = dict_scan_null(data_dict)
 
         return data_dict
 
@@ -101,21 +94,6 @@ class Say:
         print("            (__)\  error )\/\ ")
         print("                ||----w | ")
         print("                ||     || ")
-
-    def bart_says(self, str):
-        print("⌈" + len(str) * "¯" + "⌉")
-        print("⁞" + str + "⁞")
-        print("⌊" + len(str) * "_" + "⌋")
-        print("   |/")
-        print("|\/\/\/|")
-        print("|      |")
-        print("|      |")
-        print("| (o)(o)")
-        print("C      _)")
-        print("| ,___|")
-        print("|   /")
-        print("/____|")
-        print("/     |")
 
 
 # --------------------------------------------
