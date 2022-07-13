@@ -1,4 +1,4 @@
-Id_Geolocalizacion,zip_code_prefix,Latitud,Longitud,Ciudad,Estado
+geolocation_id,geolocation_zip_code_prefix,geolocation_lat,geolocation_lng,geolocation_city,geolocation_state
 0,1001,-23.550189776551765,-46.6340235559042,sao paulo,SP
 1,1002,-23.54814573176355,-46.63497921074498,sao paulo,SP
 2,1003,-23.54899372481316,-46.635731309975874,sao paulo,SP
