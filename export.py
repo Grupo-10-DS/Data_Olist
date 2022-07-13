@@ -1,5 +1,3 @@
-from email import header
-import pandas
 from utils import Say
 
 say = Say()
