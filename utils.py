@@ -19,8 +19,10 @@ class Labels:
         # self.encoding = encoding
 
     def get_list_dir(self, path):
-        self.__labels = os.listdir(path)
-        return self.__labels
+        self.labels = os.listdir(path)
+        print("Archivos cargados")
+        print(f"{pd.Series(self.labels)}")
+        return self.labels
 
     def get_labels(self, path):
         labels = self.get_list_dir(path)

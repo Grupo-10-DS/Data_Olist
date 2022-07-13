@@ -1,12 +1,13 @@
+from cmath import exp
 from utils import Load
 from resumen import dict_resume
 from export import export_csv
-from trasform import exporter
+from trasform import tranformer
 
 path = "./data/e-comerce_Olist_dataset"
 load = Load(path)
 
-
+# ETL
 # E
 # Se carga a un diccionario el directorio
 data_dict = load.load_from_csv(path)
@@ -15,8 +16,7 @@ if __name__ == "__main__":
     pass
     # T
     # Funcion que transformará los  datos
-
-    exporter(data_dict)
+    tranformer(data_dict)
 
     # dict_resume(data_dict)
 
