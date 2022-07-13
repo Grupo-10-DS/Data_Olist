@@ -3,7 +3,13 @@ import os
 import pandas as pd
 import csv
 
-from validators import find_date_dict,dict_lower,dict_upper,dict_dupli_id, dict_scan_null
+from validators import (
+    find_date_dict,
+    dict_lower,
+    dict_upper,
+    dict_dupli_id,
+    dict_scan_null,
+)
 
 
 class Labels:
@@ -21,8 +27,6 @@ class Labels:
         labels_clean = []
 
         for label in labels:
-            if label == "Localidades.csv":
-                continue
             labels_clean.append(label[:-4])
 
         return labels_clean
@@ -48,7 +52,6 @@ class Load:
 
             data_dict[name[:-4]] = pd.read_csv(full_path)
 
-        
         data_dict = find_date_dict(data_dict)
 
         data_dict = dict_lower(data_dict)
