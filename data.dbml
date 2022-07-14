@@ -1,0 +1,168 @@
+Project Olist{
+    database_type: 'mysql',
+    Note:'''
+        #Olist DataBase
+        Olist is a database for storing the information of Brasial E-commerce website.
+        It is a database for storing the information of the products, users, sellers, location.
+
+    '''
+}
+Table geolocation {
+    geolocation_id int [pk, increment, note: 'clave primaria']
+    geolocation_zip_code_prefix int [not null note: "codigo postal " ]
+    geolocation_lat float [not null note: "latitud"]
+    geolocation_lon float [not null note: "longitud"]
+    geolocation_city varchar(255) [not null, note: "ciudad"]
+    geolocation_state varchar(255) [not null, note: "estado"] 
+
+    note: '''
+        #geolocation DataBase
+        geolocation is a database for storing the information of the location of the products.
+        It is a database for storing the information of the zip code, latitude, longitude, city, state.
+
+        
+    '''
+ }
+
+Table customer {
+    customer_id varchar(255) [pk, not null, note: "clave de la orden de compra del dataset. Cada orden tiene un unico customer_id"]
+    customer_unique_id varchar(255) [not null, note: "Identificador unico del cliente"]
+    geolocation_id int [not null, note: "Identificador de la geolocalizacion del cliente"]
+    note: '''
+        #customer DataBase
+        customer is a database for storing the information of the customers.
+        It is a database for storing the information of the customer id , customer unique id, geolocation id.
+
+    '''
+}
+
+Table order_status{
+    order_status_id int [pk, increment, note: "clave primaria"]
+    status varchar(255) [not null, note: "estado de la orden"]
+
+    note: '''
+        #order_status DataBase
+        order_status is a database for storing the information of the order status.
+        It is a database for storing the information of the order status id, status.
+    '''
+}
+
+Table order {
+    order_id varchar(255) [pk, increment, note: "clave primaria"]
+    customer_id varchar(255) [pk, not null, note: "Identificador del cliente"]
+    order_status_id int [pk, not null, note: 'Identificador del estado de la orden']
+    order_purchase_timestamp datetime [not null, note: 'Fecha y hora de la orden']
+    order_approved_at datetime [not null, note: 'Fecha y hora de aprobacion de la orden']
+    order_delivered_carrier_date datetime [not null, note: 'Fecha y hora de entrega del paquete']
+    order_delivered_customer_date datetime [not null, note:'Fecha y hora de entrega al cliente']
+    order_estimated_delivery_date datetime [not null, note: 'Fecha y hora estimada de entrega']
+
+    note: '''
+        #order DataBase
+        order is a database for storing the information of the order.
+        It is a database for storing the information of the order id, customer id, order status id, purchase timestamp, approved at, delivered carrier date, delivered customer date, estimated delivery date.
+    '''
+}
+
+Table product_category_name{
+    product_category_name_id int [pk, increment]
+    category_name varchar(255) [not null]
+
+    note : '''
+        #product_category_name DataBase
+        product_category_name is a database for storing the information of the product category name.
+        It is a database for storing the information of the product category name id, category name.
+    '''
+}
+
+Table product {
+    product_id int [pk, increment, note: "clave primaria"]
+    product_category_name_id int [not null, note: "Identificador de la categoria del producto"]
+    product_name_lenght int [not null, note: "Longitud del nombre del producto"]
+    product_description_lenght int [not null, note : "Longitud de la descripcion del producto"]
+    product_photos_qty int [not null, note: "Cantidad de fotos del producto"]
+    product_weight_g float [not null, note: "Peso del producto en gramos"]
+    product_length_cm float [not null, note: "Longitud del producto en centimetros"]
+    product_height_cm float [not null,  note: "Altura del producto en centimetros"]
+    product_width_cm float [not null, note: "Ancho del producto en centimetros"]
+    note: '''
+        #product DataBase
+        product is a database for storing the information of the product.
+        It is a database for storing the information of the product id, product category name id, product name length, product description length, product photos qty, product weight g, product length cm, product height cm, product width cm.
+    '''
+}
+
+Table seller {
+    seller_id varchar(255) [pk, not null, note: "clave primaria"]
+    geolocation_id int [not null, note: "Identificador de la geolocalizacion del vendedor"]
+    note : '''
+        #seller DataBase
+        seller is a database for storing the information of the seller.
+        It is a database for storing the information of the seller id, geolocation id,.
+    '''
+}
+
+Table item {
+    order_id varchar(255) [not null, note: "Identificador de la orden"]
+    order_item_id varchar(255) [not null, note: "Identificador del item de la orden"]
+    product_id varchar(255) [not null,  note: "Identificador del producto"]
+    seller_id varchar(255) [not null, note: "Identificador del vendedor"]
+    shipping_limit_date datetime [not null, note: "Fecha limite de envio"]
+    price  float [not null, note: "Precio del producto"]
+    freight_value float [not null, note: "Valor del flete"]
+    note : '''
+        #item DataBase
+        item is a database for storing the information of the item.
+        It is a database for storing the information of the order id, order item id, product id, seller id, shipping limit date, price, freight value.
+    '''
+}
+
+Table reviews{
+    review_id varchar(255) [pk,not null, note: "clave primaria"]
+    order_id varchar(255) [not null, note: "Identificador de la orden"]
+    review_score int [not null, note: "Puntuacion del producto"]
+    review_comment_title varchar(255) [not null, note: "Titulo del comentario"]
+    review_comment_message varchar(255) [not null, note: "Mensaje del comentario"]
+    review_answer_timestamp datetime [not null, note: "Fecha y hora de la respuesta"]
+
+    note: '''
+        #reviews DataBase
+        reviews is a database for storing the information of the reviews.
+        It is a database for storing the information of the review id, order id, review score, review comment title, review comment message, review answer timestamp, order order id, order customer customer id.
+    '''
+}
+
+Table payment_type{
+    payment_type_id int [pk, not null,note: "clave primaria"]
+    payment_type varchar(255) [not null, note: "Tipo de pago"]
+
+    note: '''
+        #payment_type DataBase
+        payment_type is a database for storing the information of the payment type.
+        It is a database for storing the information of the payment type id, payment type.
+    '''
+}
+
+Table payment{
+    order_id  varchar(255) [not null, note: "Identificador de la orden"]
+    payment_sequential int [not null, note: "Numero de pago"]
+    payment_type_id int [not null, note: "Identificador del tipo de pago"]
+    payment_installments int [not null, note: "Numero de cuotas"]
+    payment_value float [not null, note: "Valor del pago"]
+    note: '''
+        #payment DataBase
+        payment is a database for storing the information of the payment.
+        It is a database for storing the information of the order id, payment sequential, payment type id, payment installments, payment value, order order id, order customer customer id, payment type payment type id.
+    '''
+}
+
+Table product_info {
+    product_category_name varchar(255) [not null, note: "Nombre de la categoria del producto"]
+    product_category_name_english varchar(255) [not null, note: "Nombre de la categoria del producto en ingles"]
+
+    note: '''
+        #product_info DataBase
+        product_info is a database for storing the information of the product info.
+        It is a database for storing the information of the product category name, product category name english.
+    '''
+}
