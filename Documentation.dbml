@@ -1,5 +1,5 @@
 Project Olist{
-    database_type: 'mysql',
+    database_type: 'mysql'
     Note:'''
         #Olist DataBase
         Olist is a database for storing the information of Brasial E-commerce website.
@@ -166,3 +166,29 @@ Table product_info {
         It is a database for storing the information of the product category name, product category name english.
     '''
 }
+
+Ref: geolocation.geolocation_id > customer.geolocation_id
+Ref: geolocation.geolocation_id > seller.geolocation_id
+
+Ref: seller.seller_id > item.seller_id
+
+Ref: item.order_id > order.order_id
+
+Ref: order_status.order_status_id > order.order_status_id
+
+Ref: product_category_name.product_category_name_id > product.product_category_name_id
+
+Ref: product.product_id > item.product_id
+
+Ref: payment_type.payment_type_id > payment.payment_type_id
+
+Ref: payment.order_id > order.order_id
+
+Ref: product_info.product_category_name > product.product_category_name_id
+
+Ref: customer.customer_id > order.customer_id
+
+Ref: reviews.order_id > order.order_id
+
+
+
