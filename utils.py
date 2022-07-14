@@ -1,4 +1,6 @@
 import os
+from random import choice
+from time import sleep
 
 import pandas as pd
 import csv
@@ -22,6 +24,7 @@ class Labels:
         self.labels = os.listdir(path)
         print("Archivos cargados")
         print(f"{pd.Series(self.labels)}")
+        sleep(0.2)
         return self.labels
 
     def get_labels(self, path):
@@ -53,7 +56,7 @@ class Load:
             full_path = os.path.join(path, name)
 
             data_dict[name[:-4]] = pd.read_csv(full_path)
-
+        
         data_dict = find_date_dict(data_dict)
 
         data_dict = dict_lower(data_dict)
@@ -62,6 +65,8 @@ class Load:
 
         data_dict = dict_dupli_id(data_dict)
 
+        Say().cow_says_good(f'Se cargó {len(data_dict.keys())} dataframes')
+        sleep(0.5)     
         return data_dict
 
     def incremental_from_csv(self, path):
@@ -73,9 +78,11 @@ class Load:
 
 
 class Say:
+    
 
     # -----------------------------------------------
     def cow_says_good(self, str):
+        emoji_list = ['😉','🛐','🙈','🐶','🥇','🤖']
         """
         Aquí va un string , y la vaquita lo dirá :v
         """
@@ -85,7 +92,7 @@ class Say:
         print(" -" + lenght * "-" + "- ")
         print("        \   ^__^ ")
         print("         \  (oo)\_______ ")
-        print("            (__)\  good )\/\ ")
+        print(f"            (__)\ good{choice(emoji_list)} )\/\ ")
         print("                ||----w | ")
         print("                ||     || ")
 
