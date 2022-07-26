@@ -1,3 +1,5 @@
+name: Load directory to GCP
+on: [push]
 jobs:
   job_id:
     permissions:
