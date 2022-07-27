@@ -13,11 +13,30 @@ jobs:
         workload_identity_provider: 'projects/123456789/locations/global/workloadIdentityPools/my-pool/providers/my-provider'
         service_account: 'my-service-account@my-project.iam.gserviceaccount.com'
 
-    - id: 'upload-file'
+    - id: 'item-delta'
       uses: 'google-github-actions/upload-cloud-storage@v0'
       with:
-        path: '/path/to/file'
-        destination: 'bucket-name/file'
+        path: '/main/Dataset_delta/item_delta.csv'
+        destination: 'data_olist_csv/item_delta.csv'
+
+    - id: 'order-delta'
+      uses: 'google-github-actions/upload-cloud-storage@v0'
+      with:
+        path: '/main/Dataset_delta/order_delta.csv'
+        destination: 'data_olist_csv/order_delta.csv'
+
+    - id: 'payment-delta'
+      uses: 'google-github-actions/upload-cloud-storage@v0'
+      with:
+        path: '/main/Dataset_delta/payment_delta.csv'
+        destination: 'data_olist_csv/payment_delta.csv'
+
+    - id: 'review-delta'
+      uses: 'google-github-actions/upload-cloud-storage@v0'
+      with:
+        path: '/main/Dataset_delta/review_delta.csv'
+        destination: 'data_olist_csv/payment_delta.csv'
+
 
     # Example of using the output
     - id: 'uploaded-files'

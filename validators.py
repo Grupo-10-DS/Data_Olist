@@ -1,13 +1,10 @@
 import pandas as pd
 import numpy as np
+from wikiframe import Say
+
 
 def val_date(col) -> bool:
     key = ["date", "times", "order_approved_at"]
-    for name in key:
-        return name in col
-
-def val_id(col) -> bool:
-    key = ['id']
     for name in key:
         return name in col
 
@@ -36,12 +33,18 @@ def col_upp(df):
     return df
 
 def dupli_id(df):
-    cols = list(df.columns)
-    df.drop_duplicates(inplace=True)
-    for col in cols:
-        if val_id(col):
-            df.drop_duplicates(subset=col,keep='first',inplace=True)
-    
+    if 'order_id' in df:
+        df.drop_duplicates(subset='order_id',keep='first', inplace = True)
+    return df
+
+def date_order_val(df):
+    if 'order_delivered_customer_date' in df:
+        df['diff'] = df['order_delivered_customer_date'] - df['order_delivered_carrier_date'] 
+        index = df['diff'][df['diff'] < pd.Timedelta(0)].index
+        df.drop(index = index, axis = 0, inplace = True)
+        if list(index) != []:
+            Say(f'drop {index.values}').cow_says_error()
+        df.drop('diff', axis=1, inplace=True)
     return df
 
 def sum_null(df):
