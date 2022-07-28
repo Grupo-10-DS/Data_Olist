@@ -59,7 +59,6 @@ def move_blob(bucket_name, blob_name, destination_bucket_name, destination_blob_
         source_blob, destination_bucket, destination_blob_name
     )
     source_bucket.delete_blob(blob_name)
-
     print(
         "Blob {} in bucket {} moved to blob {} in bucket {}.".format(
             source_blob.name,
