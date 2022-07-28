@@ -16,7 +16,7 @@ jobs:
         workload_identity_provider: 'projects/495045071267/locations/global/workloadIdentityPools/my-pool/providers/my-provider'
         service_account: dataflow-g10@potent-bloom-355614.iam.gserviceaccount.com
     
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v2
     
     - id: 'item-delta'
       uses: 'google-github-actions/upload-cloud-storage@v0.8.0'
