@@ -196,7 +196,7 @@ def run():
     for blob in list_blobs:
         move_blob(
             BUCKET_NAME,
-            f"/deltas_por_cargar/{blob}",
+            f"deltas_por_cargar/{blob}",
             BUCKET_NAME,
-            f"/deltas_cargados/{blob[:-4]} {datetime.now()}.csv",
+            f"deltas_cargados/{blob[:-4]} {datetime.now()}.csv",
         )
