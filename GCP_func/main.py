@@ -126,6 +126,13 @@ def prepare_to_sql(df):
 
 
 def run():
+
+    BUCKET_NAME = "data_olist_csv"
+    MYSQL_USR = "root"
+    MYSQL_PWD = ""
+    MYSQL_HOST = "34.135.162.156"
+    MYSQL_DB_NAME = "Olist"
+
     item_delta = pd.read_csv("gs://data_olist_csv/deltas_por_cargar/item_delta.csv")
     order_delta = pd.read_csv("gs://data_olist_csv/deltas_por_cargar/order_delta.csv")
     payment_delta = pd.read_csv(
@@ -173,12 +180,6 @@ def run():
         + order_string
         + ";"
     )
-
-    BUCKET_NAME = "data_olist_csv"
-    MYSQL_USR = "root"
-    MYSQL_PWD = ""
-    MYSQL_HOST = "34.135.162.156"
-    MYSQL_DB_NAME = "Olist"
 
     db_connection = create_db_connection(
         host_name=MYSQL_HOST,
