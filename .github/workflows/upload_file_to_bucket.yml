@@ -1,7 +1,7 @@
 name: Load file to GCP
 on:
   push:
-    branches: [master]
+    branches: [main]
 jobs:
   upload_new_data:
     runs-on: ubuntu-latest
