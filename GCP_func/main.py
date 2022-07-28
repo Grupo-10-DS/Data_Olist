@@ -190,5 +190,5 @@ def run():
             BUCKET_NAME,
             f"/deltas_por_cargar/{blob}",
             BUCKET_NAME,
-            f"/deltas_cargados/{blob} {datetime.now()}",
+            f"/deltas_cargados/{blob[:-4]} {datetime.now()}.csv",
         )
