@@ -72,7 +72,9 @@ def move_blob(bucket_name, blob_name, destination_bucket_name, destination_blob_
 
 def run():
     BUCKET_NAME = "data_olist_csv"
+
     list_blobs = list_blobs_with_prefix(BUCKET_NAME, prefix="deltas_por_cargar/")
+
     for blob in list_blobs:
         move_blob(
             BUCKET_NAME,
