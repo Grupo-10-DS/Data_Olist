@@ -43,9 +43,3 @@ jobs:
 
     - id: 'move-files'
       run: mv ../../Dataset_sinteticos/item_delta.csv ../../Dataset_sinteticos/order_delta.csv ../../Dataset_sinteticos/payment_delta.csv ../../Dataset_sinteticos/review.csv subido_test/
-
-    # Example of using the output
-    - id: 'uploaded-files'
-      uses: 'foo/bar@main'
-      env:
-        file: '${{ steps.upload-file.outputs.uploaded }}'
