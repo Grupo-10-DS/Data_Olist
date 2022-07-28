@@ -2,7 +2,6 @@ import pandas as pd
 from google.cloud import storage
 import mysql.connector
 from mysql.connector import Error
-from datetime import datetime
 
 
 def list_blobs_with_prefix(bucket_name, prefix, delimiter=None):
@@ -126,6 +125,8 @@ def prepare_to_sql(df):
 
 
 def run():
+
+    from datetime import datetime
 
     BUCKET_NAME = "data_olist_csv"
     MYSQL_USR = "root"
