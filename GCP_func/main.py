@@ -4,12 +4,6 @@ import mysql.connector
 from mysql.connector import Error
 from datetime import datetime
 
-BUCKET_NAME = "data_olist_csv"
-MYSQL_USR = "root"
-MYSQL_PWD = ""
-MYSQL_HOST = "34.135.162.156"
-MYSQL_DB_NAME = "Olist"
-
 
 def list_blobs_with_prefix(bucket_name, prefix, delimiter=None):
     """Lists all the blobs in the bucket that begin with the prefix.
@@ -179,6 +173,12 @@ def run():
         + order_string
         + ";"
     )
+
+    BUCKET_NAME = "data_olist_csv"
+    MYSQL_USR = "root"
+    MYSQL_PWD = ""
+    MYSQL_HOST = "34.135.162.156"
+    MYSQL_DB_NAME = "Olist"
 
     db_connection = create_db_connection(
         host_name=MYSQL_HOST,
