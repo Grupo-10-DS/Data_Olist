@@ -16,8 +16,8 @@ jobs:
     - id: 'auth'
       uses: 'google-github-actions/auth@v0'
       with:
-        workload_identity_provider: 'projects/495045071267/locations/global/workloadIdentityPools/my-pool/providers/my-provider'
-        service_account: service-495045071267@gs-project-accounts.iam.gserviceaccount.com
+        workload_identity_provider: ${{ secrets.GCP_WIP_SA }}
+        service_account: ${{ secrets.GCP_SA }}
     
     
     - id: 'item-delta'
