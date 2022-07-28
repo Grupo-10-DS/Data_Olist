@@ -180,6 +180,13 @@ def run():
         + ";"
     )
 
+    db_connection = create_db_connection(
+        host_name=MYSQL_HOST,
+        user_name=MYSQL_USR,
+        user_password=MYSQL_PWD,
+        db_name=MYSQL_DB_NAME,
+    )
+
     execute_query(db_connection, insert_item)
     execute_query(db_connection, insert_order)
     execute_query(db_connection, insert_payment)
