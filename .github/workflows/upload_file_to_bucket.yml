@@ -42,10 +42,7 @@ jobs:
         destination: 'gs://data_olist_csv/deltas_por_cargar/review_delta.csv'
 
     - id: 'move-files'
-      run: mv ../../Dataset_sinteticos/item_delta.csv \
-      ../../Dataset_sinteticos/order_delta.csv \
-      ../../Dataset_sinteticos/payment_delta.csv \
-      ../../Dataset_sinteticos/review.csv subido_test/
+      run: mv ../../Dataset_sinteticos/item_delta.csv ../../Dataset_sinteticos/order_delta.csv ../../Dataset_sinteticos/payment_delta.csv ../../Dataset_sinteticos/review.csv subido_test/
 
     # Example of using the output
     - id: 'uploaded-files'
