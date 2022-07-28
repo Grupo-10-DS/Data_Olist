@@ -20,8 +20,8 @@ jobs:
     - id: 'item-delta'
       uses: 'google-github-actions/upload-cloud-storage@v0'
       with:
-        path: '../../Dataset_sinteticos/item_delta.csv'
-        destination: 'gs://data_olist_csv/deltas_por_cargar/item_delta'
+        path: 'Dataset_sinteticos/item_delta.csv'
+        destination: 'gs://data_olist_csv/deltas_por_cargar/item_delta.csv'
 
     - id: 'order-delta'
       uses: 'google-github-actions/upload-cloud-storage@v0'
