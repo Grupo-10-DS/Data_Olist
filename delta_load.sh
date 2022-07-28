@@ -1,5 +1,7 @@
 echo "Enter your message"
 read message
+python delta.py
+git pull
 git add .
 git commit -m"${message}"
 if [ -n "$(git status - porcelain)" ];
@@ -8,5 +10,5 @@ then
 else
  git status
  echo "Pushing data to remote server!!!"
- git push -u origin master
+ git push -u origin main
 fi
