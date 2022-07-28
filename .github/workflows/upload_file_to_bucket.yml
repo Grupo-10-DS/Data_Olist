@@ -46,6 +46,3 @@ jobs:
         path: '/home/runner/work/Data_Olist/Data_Olist/Dataset_sinteticos/review_delta.csv'
         destination: 'data_olist_csv/deltas_por_cargar/'
         parent: false
-
-    - id: 'move-files'
-      run: mv /home/runner/work/Data_Olist/Data_Olist/Dataset_sinteticos/item_delta.csv /home/runner/work/Data_Olist/Data_Olist/Dataset_sinteticos/order_delta.csv /home/runner/work/Data_Olist/Data_Olist/Dataset_sinteticos/payment_delta.csv /home/runner/work/Data_Olist/Data_Olist/Dataset_sinteticos/review.csv /home/runner/work/Data_Olist/Data_Olist/subido_test/
