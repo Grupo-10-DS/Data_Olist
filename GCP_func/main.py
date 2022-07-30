@@ -201,3 +201,7 @@ def run():
             BUCKET_NAME,
             f"deltas_cargados/{blob[:-4]} {datetime.now()}.csv",
         )
+
+
+if __name__ == "__main__":
+    run()
