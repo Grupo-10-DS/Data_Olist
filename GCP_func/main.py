@@ -148,39 +148,23 @@ def run():
     payment_string = prepare_to_sql(payment_delta)
     review_string = prepare_to_sql(review_delta)
 
-    insert_item = (
-        "INSERT INTO item (order_id, order_item_id,\
-                    product_id, seller_id, shipping_limit_date,\
-                    price, freight_value) VALUES"
-        + item_string
-        + ";"
-    )
+    insert_item = """INSERT INTO item (order_id, order_item_id,
+                    product_id, seller_id, shipping_limit_date,
+                    price, freight_value) VALUES {item_string};"""
 
-    insert_payment = (
-        "INSERT INTO payment (order_id, payment_sequential,\
-                    payment_type_id, payment_installments, payment_value)\
-                    VALUES"
-        + payment_string
-        + ";"
-    )
+    insert_payment = """INSERT INTO payment (order_id, payment_sequential,
+                    payment_type_id, payment_installments, payment_value)
+                    VALUES{payment_string};"""
 
-    insert_review = (
-        "INSERT INTO review (review_id, order_id,review_score,\
-                    review_comment_title,review_comment_message,\
-                    review_creation_date,review_answer_timestamp)\
-                    VALUES"
-        + review_string
-        + ";"
-    )
+    insert_review = """INSERT INTO review (review_id, order_id,review_score,
+                    review_comment_title,review_comment_message,
+                    review_creation_date,review_answer_timestamp)
+                    VALUES {review_string};"""
 
-    insert_order = (
-        "INSERT INTO `order` (order_id,customer_id,order_status_id,\
-                    order_purchase_timestamp,order_approved_at,\
-                    order_delivered_carrier_date,order_delivered_customer_date,\
-                    order_estimated_delivery_date) VALUES"
-        + order_string
-        + ";"
-    )
+    insert_order = """INSERT INTO `order` (order_id,customer_id,order_status_id,
+                    order_purchase_timestamp,order_approved_at,
+                    order_delivered_carrier_date,order_delivered_customer_date,
+                    order_estimated_delivery_date) VALUES {order_string};"""
 
     db_connection = create_db_connection(
         host_name=MYSQL_HOST,
